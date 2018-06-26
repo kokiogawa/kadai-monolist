@@ -12,14 +12,14 @@
                         <p class="item-title">{{ $item->name }}</p>
                         <div class="buttons text-center">
                             @if (Auth::check())
-                                @include('items.want_button', ['item' => $item])
+                                 @include('items.want_button', ['item' => $item])
+                                 @include('items.have_button', ['item' => $item])
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="want-users">
                 <div class="panel panel-default">
