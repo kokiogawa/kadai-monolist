@@ -1,4 +1,4 @@
-use \App\Item;
+　use\App\Item;
 
   class ItemsController extends Controller
   {
@@ -9,7 +9,7 @@ use \App\Item;
         $items = [];
         if ($keyword) {
             $client = new \RakutenRws_Client();
-            $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
+            $client->setApplicationId(env('1037083411810787322'));
 
             $rws_response = $client->execute('IchibaItemSearch', [
                 'keyword' => $keyword,
@@ -33,4 +33,16 @@ use \App\Item;
             'items' => $items,
         ]);
     }
+    
+    public function show($id)
+    {
+      $item = Item::find($id);
+      $want_users = $item->want_users;
+
+      return view('items.show', [
+          'item' => $item,
+          'want_users' => $want_users,
+      ]);
+    }
+    
   }
